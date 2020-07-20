@@ -10,7 +10,8 @@ const request = require('request')
 
 
 const clients = (callback) => {
-    const url = `http://54.211.89.96:8087/clients`
+    // const url = `http://localhost:8087/clients`
+    const url = `backend/clients`
 
     request({ url, json: true }, (error, { body }) => {
         if (error) {

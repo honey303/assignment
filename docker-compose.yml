@@ -13,4 +13,6 @@ services:
     command: nodemon server.js
     ports:
       - "8088:8088"
+    depends_on:
+      - backend
     restart: always

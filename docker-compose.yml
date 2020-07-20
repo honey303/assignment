@@ -6,13 +6,13 @@ services:
     command: python app.py
     ports:
       - "8087:8087"
-    restart: always
 
   frontend:
     build: ./frontend
     command: nodemon server.js
     ports:
       - "8088:8088"
+    environment:
+      APP_URL: http://backend:8087
     depends_on:
       - backend
-    restart: always

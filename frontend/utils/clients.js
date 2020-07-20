@@ -11,7 +11,7 @@ const request = require('request')
 
 const clients = (callback) => {
     // const url = `http://localhost:8087/clients`
-    const url = `backend/clients`
+    const url = process.env.APP_URL  + '/clients';
 
     request({ url, json: true }, (error, { body }) => {
         if (error) {

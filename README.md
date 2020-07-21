@@ -1,4 +1,4 @@
-# Steps to spin up a simple kubernetes cluster via kops
+# Simple kubernetes Cluster via Kops
 
 
 ## Set up Kops environment variables
@@ -34,7 +34,7 @@ sudo echo "export PATH=$PATH:/usr/bin/kubectl"
 ```
 
 ## Setup IAM Role Manually
-Create an IAM role with the below permissions and assign it to the instance
+Create an IAM role with the below permissions and assign it to the instance from where you are executing the kops commands.
 
 ```
 AmazonEC2FullAccess
@@ -80,7 +80,8 @@ sudo kops update cluster --name ${KOPS_CLUSTER_NAME} --state ${KOPS_STATE_STORE}
 kubectl get nodes
 ```
 
-*Note: In the above example I haven't specified the networking components like netowrk cidr or the vpc and subnets to use with the cluster. We can alternatively pass them as parameters to kops cli while creating the cluster. For Eg.*
+*Note: In the above example I haven't specified the networking components like netowrk cidr or the vpc and subnets to use with the cluster. We can alternatively pass them as parameters to kops cli command while creating the cluster.
+For Eg.*
 
 ```
 sudo kops create cluster \

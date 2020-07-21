@@ -1,7 +1,9 @@
-# Simple Kubernetes Cluster Setup
+# Steps to spin up a simple kubernetes cluster via kops
 
 
 ## Set up Kops environment variables
+
+```
 sudo su
 echo "export s3bucketname=kops-poc-s3"
 echo "export KOPS_STATE_STORE=s3://$s3bucketname"
@@ -10,19 +12,26 @@ echo "export awsregion=us-east-1"
 echo "export clusterkey=test"
 echo "export mastertype=t2.medium"
 echo "export nodetype=t2.medium"
+```
 
 
 ## Install kops
+
+```
 curl -LO https://github.com/kubernetes/kops/releases/download/$(curl -s https://api.github.com/repos/kubernetes/kops/releases/latest | grep tag_name | cut -d '"' -f 4)/kops-linux-amd64
 chmod +x kops-linux-amd64
 sudo mv kops-linux-amd64 /usr/bin/kops
 sudo echo "export PATH=$PATH:/usr/bin/kops"
+```
 
 ## Install kubectl
+
+```
 curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl
 chmod +x ./kubectl
 sudo mv ./kubectl /usr/bin/kubectl
 sudo echo "export PATH=$PATH:/usr/bin/kubectl"
+```
 
 ## Setup IAM Role Manually
 Create an IAM role with the below permissions and assign it to the instance

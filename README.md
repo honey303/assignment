@@ -79,3 +79,27 @@ sudo kops update cluster --name ${KOPS_CLUSTER_NAME} --state ${KOPS_STATE_STORE}
 ```
 kubectl get nodes
 ```
+
+*Note: In the above example I haven't specified the networking components like netowrk cidr or the vpc and subnets to use with the cluster. We can alternatively pass them as parameters to kops cli while creating the cluster. For Eg.*
+
+```
+sudo kops create cluster \
+--cloud=aws \
+--state=${KOPS_STATE_STORE} \
+--node-count=1 \
+--master-count=1 \
+--master-size=${mastertype} \
+--node-size=${nodetype} \
+--zones=us-east-1a,us-east-1b,us-east-1e \
+--name=${KOPS_CLUSTER_NAME} \
+--vpc=${vpcid} \
+--subnets=${privsubnet1},${privsubnet2},${privsubnet3} \
+--associate-public-ip=false \
+--utility-subnets=${pubsubnet1},${pubsubnet2},${pubsubnet3} \
+--topology=private \
+--networking=amazon-vpc-routed-eni \
+--network-cidr=${networkcidr} \
+--api-loadbalancer-type=internal \
+--ssh-public-key=~/.ssh/${clusterkey}.pub
+
+``

@@ -1,7 +1,7 @@
-*Simple Kubernetes Cluster Setup*
+# Simple Kubernetes Cluster Setup
 
 
-# Set up Kops environment variables
+## Set up Kops environment variables
 sudo su
 echo "export s3bucketname=kops-poc-s3"
 echo "export KOPS_STATE_STORE=s3://$s3bucketname"
@@ -12,33 +12,40 @@ echo "export mastertype=t2.medium"
 echo "export nodetype=t2.medium"
 
 
-# Install kops
+## Install kops
 curl -LO https://github.com/kubernetes/kops/releases/download/$(curl -s https://api.github.com/repos/kubernetes/kops/releases/latest | grep tag_name | cut -d '"' -f 4)/kops-linux-amd64
 chmod +x kops-linux-amd64
 sudo mv kops-linux-amd64 /usr/bin/kops
 sudo echo "export PATH=$PATH:/usr/bin/kops"
 
-# Install kubectl
+## Install kubectl
 curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl
 chmod +x ./kubectl
 sudo mv ./kubectl /usr/bin/kubectl
 sudo echo "export PATH=$PATH:/usr/bin/kubectl"
 
-# Setup IAM Role Manually
+## Setup IAM Role Manually
 Create an IAM role with the below permissions and assign it to the instance
 
+```
 AmazonEC2FullAccess
 AmazonRoute53FullAccess
 AmazonS3FullAccess
 IAMFullAccess
 AmazonVPCFullAccess
+```
 
-# Setup s3
+## Setup s3
+
+```
 aws s3api create-bucket --bucket $s3bucketname --region $awsregion
 aws s3api put-bucket-versioning --bucket $s3bucketname --versioning-configuration Status=Enabled
 aws s3api put-bucket-encryption --bucket $s3bucketname  --server-side-encryption-configuration '{"Rules":[{"ApplyServerSideEncryptionByDefault":{"SSEAlgorithm":"AES256"}}]}'
+```
 
-# Create Cluster Config
+## Create Cluster Config
+
+```
 sudo kops create cluster \
 --cloud=aws \
 --state=${KOPS_STATE_STORE} \
@@ -50,9 +57,16 @@ sudo kops create cluster \
 --name=${KOPS_CLUSTER_NAME} \
 --networking=amazon-vpc-routed-eni \
 --ssh-public-key=~/.ssh/${clusterkey}.pub
+```
 
-# Update the cluster
+## Update the cluster
+
+```
 sudo kops update cluster --name ${KOPS_CLUSTER_NAME} --state ${KOPS_STATE_STORE} --yes
+```
 
-# Test the cluster
+## Test the cluster
+
+```
 kubectl get nodes
+```

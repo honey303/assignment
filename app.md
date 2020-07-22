@@ -9,7 +9,7 @@ docker-compose
 # Application configuration
 
 ```
-Backend is written in python3.6
+Backend is written in python
 Frontend is written in NodeJS
 ```
 
@@ -24,15 +24,13 @@ docker-compose up -d
 
 # Accessing the application
 
-*I have hosted the application on AWS EC2 instance*
-
 *Backend api call*
 ```
-50.17.91.83:8087/clients 
+http://localhost:8087/clients 
 
 ```
 *Frontend displaying the list of Clients in a tabular format*
 ```
-50.17.91.83:8088 
+http://localhost:8088 
 
 ```

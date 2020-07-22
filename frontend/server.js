@@ -14,10 +14,10 @@ app.get('/', (req, res) => {
 
       clients((error, clientsData) => {
           if (error) {
-              return res.send({ error })
+              return res.send({ error });
           }
 
-          res.render('index', {clients: clientsData['clients']})
+          res.render('index', {clients: clientsData['clients']});
 
       });
 });

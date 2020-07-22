@@ -1,4 +1,4 @@
-# Simple kubernetes Cluster via Kops
+# Simple Kubernetes Cluster via Kops
 
 
 ## Set up Kops environment variables
@@ -44,7 +44,7 @@ IAMFullAccess
 AmazonVPCFullAccess
 ```
 
-## Setup s3
+## Setup S3
 
 ```
 aws s3api create-bucket --bucket $s3bucketname --region $awsregion

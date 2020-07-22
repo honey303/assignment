@@ -1,10 +1,10 @@
-const request = require('request')
+const request = require('request');
 
 
 const clients = (callback) => {
     const url = process.env.APP_URL  + '/clients';
 
-    // const url = 'http://localhost:8087/clients' #for testing locally
+    // const url = 'http://localhost:8087/clients';
 
     request({ url, json: true }, (error, { body }) => {
         if (error) {

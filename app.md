@@ -8,8 +8,10 @@ docker-compose
 
 # Application configuration
 
-## Backend is written in python3.6
-## Frontend is written in NodeJS
+```
+Backend is written in python3.6
+Frontend is written in NodeJS
+```
 
 # Running the app
 

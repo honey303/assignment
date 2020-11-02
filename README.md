@@ -1,39 +1,32 @@
-# The PoC Application #
+# AWS ECS Cluster Terraform Module #
 
-This is sample python app that exposes /version endpoint to display the python version.
+This Terraform module creates an AWS ECS cluster, ALB and IAM role for the ECS task execution.
+
 
 ## Prerequisites
 
+* Run ecr.sh file to push the docker image to the ECR repo
+
 Check valid versions on:
-* aws cli configured (with appropriate permissions)
-* docker
-* docker-compose 
+* Terraform version: v0.12.15
+* aws provider version: v3.13.0
+* aws cli configured
 
+## Input values
 
-## Steps to run the app locally
+* ECR Image URI 
+* VPC ID
+* 2 (min) pubic subnets (List of strings). For eg. ["subnet1-xxxx", "subnet2-xxxx"]
+* (1 min) Security Groups (List of strings). For eg. ["sg-xxxx"].
+*Note: HTTP (80) port must be open in the Security Group *
 
-```
-docker-compose up -d 
-```
-
-## Accessing the app locally
-
-```
-http://localhost/version
-```
-
-## Steps to push the docker image to ECR repo
-
-* The script created the ECR repo.
-* Builds the app and creates a docker image.
-* Tags the image
-* Pushes it to the ECR repo
+## Steps to run the Terraform scripts
 
 ```
-Replace in ecr.sh file <aws-account-id> with your AWS account id and <region> with the region you want to create these resources.
-sh ecr.sh
-```
+terraform init
+terraform apply
 
+```
 
 
 

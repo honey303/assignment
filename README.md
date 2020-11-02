@@ -1,6 +1,6 @@
-# Running the application #
+# The PoC Application #
 
-This is sample python app that exposes /version endpoint to displat the python version.
+This is sample python app that exposes /version endpoint to display the python version.
 
 ## Prerequisites
 
@@ -30,7 +30,7 @@ http://localhost/version
 * Pushes it to the ECR repo
 
 ```
-Replace <aws-account-id> with your AWS account id and <region> with the region you want to create these resources.
+Replace in ecr.sh file <aws-account-id> with your AWS account id and <region> with the region you want to create these resources.
 sh ecr.sh
 ```
 

@@ -20,7 +20,7 @@ docker-compose up -d
 
 
 ## Running the unit tests
-- You can execute the test cases by executing the below command.
+- You can execute the test cases by running the below command.
 ```sh
 python -m unittest unit-tests/api_test.py
 ```
@@ -30,7 +30,9 @@ _Note: Replace the **testurl** with the server ip & port you are running the app
 
 ## Deployment
 
-*Assuming that you have a minikube cluster set up. Please follow the below steps to deploy the app to the cluster.*
+*Assuming that you have a minikube cluster set up. Please follow the below step(s) to deploy the app to the cluster.*
+
+**Important**: *Please replace <image-name> in **app.yml** deployment file under k8s-manifests folder with the appropriate one.* 
 
 - Run the script **deploy.sh** to deploy the app to the k8s cluster.
 
@@ -93,7 +95,7 @@ curl --location --request PUT 'http://$(minikube ip):$NODE_PORT/configs/datacent
 - `DELETE /configs/{name}`
 
 ```sh
-curl --location --request DELETE 'http://$(minikube ip):$NODE_PORT/configs/datacenter-2'
+curl --location --request DELETE 'http://$(minikube ip):$NODE_PORT/configs/datacenter-1'
 ```
 
 - `Query /search?metadata.key=value`

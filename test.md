@@ -32,7 +32,7 @@ _Note: Replace the **testurl** with the server ip & port you are running the app
 
 *Assuming that you have a minikube cluster set up. Please follow the below step(s) to deploy the app to the cluster.*
 
-**Important**: *Please replace <image-name> in **app.yml** deployment file under k8s-manifests folder with the appropriate one.* 
+**Important**: *Please replace **<image-name>** in **app.yml** deployment file under k8s-manifests folder with the appropriate one.* 
 
 - Run the script **deploy.sh** to deploy the app to the k8s cluster.
 
